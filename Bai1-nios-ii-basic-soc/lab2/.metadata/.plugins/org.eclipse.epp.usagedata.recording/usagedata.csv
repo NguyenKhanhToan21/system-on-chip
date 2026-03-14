@@ -1,0 +1,9 @@
+what,kind,bundleId,bundleVersion,description,time
+activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1772992177147
+deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1772992177703
+activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1772992178471
+started,bundle,org.eclipse.cdt.mylyn.ui,3.6.0.v20110608-1400,"org.eclipse.cdt.mylyn.ui",1772992178546
+closed,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1772992178616
+started,bundle,org.eclipse.compare,3.5.202.R37x_v20111109-0800,"org.eclipse.compare",1772992178776
+stopped,bundle,org.eclipse.cdt.build.crossgcc,1.0.2.201202111925,"org.eclipse.cdt.build.crossgcc",1772992178965
+stopped,bundle,org.eclipse.cdt.codan.checkers.ui,1.0.0.201202111925,"org.eclipse.cdt.codan.checkers.ui",1772992178965
