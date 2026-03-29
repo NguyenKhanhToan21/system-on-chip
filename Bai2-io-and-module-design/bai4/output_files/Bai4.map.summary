@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Mon Mar 16 11:36:16 2026
+Quartus II 64-Bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition
+Revision Name : Bai4
+Top-level Entity Name : Bai4
+Family : Cyclone II
+Total logic elements : 3,341
+    Total combinational functions : 2,275
+    Dedicated logic registers : 2,246
+Total registers : 2246
+Total pins : 3
+Total virtual pins : 0
+Total memory bits : 282,624
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0

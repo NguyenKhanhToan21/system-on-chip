@@ -1,0 +1,16 @@
+Fitter Status : Successful - Mon Mar 16 11:36:27 2026
+Quartus II 64-Bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition
+Revision Name : Bai4
+Top-level Entity Name : Bai4
+Family : Cyclone II
+Device : EP2C35F672C6
+Timing Models : Final
+Total logic elements : 3,167 / 33,216 ( 10 % )
+    Total combinational functions : 2,283 / 33,216 ( 7 % )
+    Dedicated logic registers : 2,246 / 33,216 ( 7 % )
+Total registers : 2246
+Total pins : 3 / 475 ( < 1 % )
+Total virtual pins : 0
+Total memory bits : 282,624 / 483,840 ( 58 % )
+Embedded Multiplier 9-bit elements : 0 / 70 ( 0 % )
+Total PLLs : 0 / 4 ( 0 % )

@@ -1,0 +1,13 @@
+!SESSION 2026-03-22 22:02:03.311 -----------------------------------------------
+eclipse.buildId=M20120208-0800
+java.version=1.6.0_23
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-03-22 22:02:36.266
+!MESSAGE Indexed 'Bai4_bsp' (77 sources, 123 headers) in 1.16 sec: 4,382 declarations; 5,450 references; 0 unresolved inclusions; 3 syntax errors; 18 unresolved names (0.18%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-03-22 22:02:36.445
+!MESSAGE Indexed 'Bai4' (1 sources, 63 headers) in 0.18 sec: 2,398 declarations; 2,242 references; 1 unresolved inclusions; 2 syntax errors; 10 unresolved names (0.22%)
