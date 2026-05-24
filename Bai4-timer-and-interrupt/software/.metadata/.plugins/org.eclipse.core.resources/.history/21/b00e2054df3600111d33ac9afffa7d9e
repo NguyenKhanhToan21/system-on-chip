@@ -1,0 +1,68 @@
+/*
+ * Bai1.c
+ *
+ *  Created on: Apr 13, 2026
+ *      Author: Admin
+ */
+
+#include <stdio.h>
+#include "system.h"
+#include "altera_avalon_pio_regs.h"
+#include "altera_avalon_timer_regs.h"
+#include "sys/alt_irq.h"
+
+// Biến toàn cục lưu trữ thời gian
+volatile int seconds = 0;
+
+// --- Hàm xử lý ngắt Timer (Mỗi 1 giây) ---
+void timer_isr(void* context) {
+    seconds++;
+    if (seconds >= 60) {
+        seconds = 0;
+    }
+    // Xóa cờ ngắt Timer (Timeout bit)
+    IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0);
+}
+
+// --- Hàm hiển thị lên LED 7 đoạn ---
+void display_to_hex(int val) {
+    int units = val % 10; // Hàng đơn vị
+    int tens = val / 10;  // Hàng chục
+
+    // Gửi giá trị số (4-bit BCD) xuống PIO
+    // Verilog sẽ dùng bộ decoder để tự giải mã ra hình ảnh
+    IOWR_ALTERA_AVALON_PIO_DATA(PIO_0_BASE, units);
+    IOWR_ALTERA_AVALON_PIO_DATA(PIO_1_BASE, tens);
+}
+
+int main() {
+    printf("Clock system starting...\n");
+
+    // 1. Cấu hình Timer (giả sử xung nhịp 50MHz)
+    // Nạp giá trị cho 1 giây: 50,000,000 - 1
+    IOWR_ALTERA_AVALON_TIMER_PERIODL(TIMER_0_BASE, 0x2480); // 50M & 0xFFFF
+    IOWR_ALTERA_AVALON_TIMER_PERIODH(TIMER_0_BASE, 0x02FA); // 50M >> 16
+
+    // 2. Đăng ký ngắt cho Timer
+    alt_ic_isr_register(0, TIMER_0_IRQ, timer_isr, NULL, NULL);
+
+    // 3. Chạy Timer (Start, Continuous, Interrupt Enable)
+    IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_0_BASE,
+        ALTERA_AVALON_TIMER_CONTROL_START_MSK |
+        ALTERA_AVALON_TIMER_CONTROL_CONT_MSK |
+        ALTERA_AVALON_TIMER_CONTROL_ITO_MSK);
+
+    while (1) {
+        // Đọc giá trị từ Switch để thực hiện tùy chỉnh (nếu cần)
+        int sw_state = IORD_ALTERA_AVALON_PIO_DATA(SWITCHES_0_BASE);
+
+        // Nếu SW0 gạt lên, có thể tạm dừng hoặc làm gì đó tùy bạn
+        if (sw_state & 0x01) {
+            // Logic tùy chỉnh của sinh viên (VD: đóng băng thời gian)
+        } else {
+            // Cập nhật hiển thị liên tục
+            display_to_hex(seconds);
+        }
+    }
+    return 0;
+}

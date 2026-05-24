@@ -1,0 +1,20 @@
+module decoder(
+	input [3:0] iDigit,
+	output reg [6:0] oHex
+	);
+	always @(*) begin
+		case (iDigit)
+				4'h0: oHex = 7'b100_0000; // 0
+            4'h1: oHex = 7'b111_1001; // 1
+            4'h2: oHex = 7'b010_0100; // 2
+            4'h3: oHex = 7'b011_0000; // 3
+            4'h4: oHex = 7'b001_1001; // 4
+            4'h5: oHex = 7'b001_0010; // 5
+            4'h6: oHex = 7'b000_0010; // 6
+            4'h7: oHex = 7'b111_1000; // 7
+            4'h8: oHex = 7'b000_0000; // 8
+            4'h9: oHex = 7'b001_0000; // 9
+			default: oHex = 7'b111_1111; //Tat 
+			endcase
+	end 
+endmodule 

@@ -1,0 +1,66 @@
+#include <stdio.h>
+#include <unistd.h> // Để dùng hàm usleep (delay)
+#include "system.h"
+#include "altera_avalon_pio_regs.h"
+#include "altera_avalon_timer_regs.h"
+#include "sys/alt_irq.h"
+
+volatile int seconds = 0;
+
+void timer_isr(void* context) {
+    seconds++;
+    if (seconds >= 60) seconds = 0;
+    IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0);
+}
+
+void display_to_hex(int val) {
+    int units = val % 10;
+    int tens = val / 10;
+    IOWR_ALTERA_AVALON_PIO_DATA(PIO_0_BASE, units);
+    IOWR_ALTERA_AVALON_PIO_DATA(PIO_1_BASE, tens);
+}
+
+int main() {
+    printf("Clock system starting with Edit Mode...\n");
+
+    // Khởi tạo Timer và Ngắt (giữ nguyên như cũ)
+    IOWR_ALTERA_AVALON_TIMER_PERIODL(TIMER_0_BASE, 0x2480);
+    IOWR_ALTERA_AVALON_TIMER_PERIODH(TIMER_0_BASE, 0x02FA);
+    alt_ic_isr_register(0, TIMER_0_IRQ, timer_isr, NULL, NULL);
+    IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_0_BASE, 0x07);
+
+    int last_key_state = 1; // Trạng thái trước đó của KEY1 (bình thường là 1)
+
+    while (1) {
+        int sw_state = IORD_ALTERA_AVALON_PIO_DATA(SWITCHES_0_BASE);
+        int key_state = IORD_ALTERA_AVALON_PIO_DATA(PIO_1_BASE); // Đọc PIO nút nhấn
+
+        // --- NHÁNH 1: Chế độ DỪNG ĐỒNG HỒ (SW0 gạt lên) ---
+        if (sw_state & 0x01) {
+
+            // KIỂM TRA CHẾ ĐỘ CHỈNH SỬA (SW1 gạt lên)
+            if (sw_state & 0x02) {
+                // Logic bắt sườn nhấn nút: Nhấn xuống (0) và trước đó đang thả (1)
+                if (((key_state & 0x01) == 0) && (last_key_state == 1)) {
+                    seconds++;
+                    if (seconds >= 60) seconds = 0;
+
+                    // QUAN TRỌNG: Cập nhật hiển thị ngay lập tức khi nhấn nút
+                    display_to_hex(seconds);
+                    printf("Adjusting: %d seconds\n", seconds);
+                }
+            }
+        }
+        // --- NHÁNH 2: Chế độ CHẠY BÌNH THƯỜNG (SW0 gạt xuống) ---
+        else {
+            display_to_hex(seconds); // Cập nhật theo thời gian thực của Timer
+        }
+
+        // Lưu trạng thái nút để dùng cho vòng lặp sau
+        last_key_state = (key_state & 0x01);
+
+        // Delay nhỏ để chống rung phím (debounce)
+        usleep(10000);
+    }
+    return 0;
+}

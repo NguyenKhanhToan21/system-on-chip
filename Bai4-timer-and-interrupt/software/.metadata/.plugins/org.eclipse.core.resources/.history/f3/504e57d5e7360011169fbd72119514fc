@@ -1,0 +1,103 @@
+#include <stdio.h>
+#include <unistd.h>
+#include "system.h"
+#include "altera_avalon_pio_regs.h"
+#include "altera_avalon_timer_regs.h"
+#include "sys/alt_irq.h"
+
+volatile int hours = 0;
+volatile int minutes = 0;
+volatile int seconds = 0;
+volatile int is_editing = 0;
+
+// --- HÀM NGẮT TIMER (Đếm tự động) ---
+void timer_isr(void* context) {
+    IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0);
+    if (!is_editing) {
+        seconds++;
+        if (seconds >= 60) {
+            seconds = 0;
+            minutes++;
+            if (minutes >= 60) {
+                minutes = 0;
+                hours++;
+                if (hours >= 24) hours = 0;
+            }
+        }
+    }
+}
+
+void display_time() {
+    IOWR_ALTERA_AVALON_PIO_DATA(PIO_0_BASE, seconds % 10); // HEX0: Ones Giây
+    IOWR_ALTERA_AVALON_PIO_DATA(PIO_1_BASE, seconds / 10); // HEX1: Tens Giây
+    IOWR_ALTERA_AVALON_PIO_DATA(PIO_2_BASE, minutes % 10); // HEX2: Ones Phút
+    IOWR_ALTERA_AVALON_PIO_DATA(PIO_3_BASE, minutes / 10); // HEX3: Tens Phút
+    IOWR_ALTERA_AVALON_PIO_DATA(PIO_4_BASE, hours % 10);   // HEX4: Ones Giờ
+    IOWR_ALTERA_AVALON_PIO_DATA(PIO_5_BASE, hours / 10);   // HEX5: Tens Giờ
+}
+
+int main() {
+    printf("Clock System Started.\n");
+    IOWR_ALTERA_AVALON_TIMER_PERIODL(TIMER_0_BASE, 0x2480);
+    IOWR_ALTERA_AVALON_TIMER_PERIODH(TIMER_0_BASE, 0x02FA);
+    alt_ic_isr_register(0, TIMER_0_IRQ, timer_isr, NULL, NULL);
+    IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_0_BASE, 0x07);
+
+    int last_key_state = 1;
+    int last_seconds = -1;
+    int last_minutes = -1;
+    int last_hours = -1;
+    while (1) {
+        int sw_state = IORD_ALTERA_AVALON_PIO_DATA(SWITCHES_0_BASE);
+        int key_state = IORD_ALTERA_AVALON_PIO_DATA(KEYS_0_BASE);
+
+        // Logic Active High: 1 = Gạt lên (Bật), 0 = Gạt xuống (Tắt)
+        int sw0_on = ((sw_state & 0x01) != 0);
+        int sw1_on = ((sw_state & 0x02) != 0);
+        int sw2_on = ((sw_state & 0x04) != 0);
+        int sw3_on = ((sw_state & 0x08) != 0);
+
+        if (sw0_on) {
+            is_editing = 0; // Chế độ chạy tự động
+        }
+        else {
+            is_editing = 1; // Chế độ chỉnh sửa (Dừng đếm tự động)
+
+            if (((key_state & 0x01) == 0) && (last_key_state == 1)) {
+                if (sw1_on) {
+                    seconds++;
+                    if (seconds >= 60) {
+                        seconds = 0;
+                        minutes++;
+                        if (minutes >= 60) {
+                            minutes = 0;
+                            hours++;
+                            if (hours >= 24) hours = 0;
+                        }
+                    }
+                }
+                if (sw2_on) {
+                    minutes++;
+                    if (minutes >= 60) {
+                        minutes = 0;
+                        hours++;
+                        if (hours >= 24) hours = 0;
+                    }
+                }
+                if (sw3_on) {
+                    hours++;
+                    if (hours >= 24) hours = 0;
+                }
+            }
+        }
+
+        display_time();
+        if (seconds != last_seconds || minutes != last_minutes || hours != last_hours) {
+                printf("%02d:%02d:%02d\n", hours, minutes, seconds);
+                last_seconds = seconds;
+            }
+        last_key_state = (key_state & 0x01);
+        usleep(10000);
+    }
+    return 0;
+}

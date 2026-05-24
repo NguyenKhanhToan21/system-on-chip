@@ -1,0 +1,104 @@
+#include <stdio.h>
+#include <unistd.h>
+#include "system.h"
+#include "altera_avalon_pio_regs.h"
+#include "altera_avalon_timer_regs.h"
+#include "sys/alt_irq.h"
+
+// Các biến toàn cục lưu thời gian
+volatile int hours = 0;
+volatile int minutes = 0;
+volatile int seconds = 0;
+volatile int is_editing = 0; // Cờ báo hiệu đang chỉnh sửa
+
+// --- HÀM NGẮT TIMER (Chạy mỗi 1 giây) ---
+void timer_isr(void* context) {
+    IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0); // Xóa cờ ngắt
+
+    // Nếu không gạt Switch (không ở chế độ chỉnh sửa) thì đồng hồ tự chạy
+    if (!is_editing) {
+        seconds++;
+        if (seconds >= 60) {
+            seconds = 0;
+            minutes++;
+            if (minutes >= 60) {
+                minutes = 0;
+                hours++;
+                if (hours >= 24) {
+                    hours = 0;
+                }
+            }
+        }
+    }
+}
+
+// --- HÀM XUẤT RA 6 LED 7 ĐOẠN ---
+void display_time() {
+    // HEX 1, 0: Giây
+    IOWR_ALTERA_AVALON_PIO_DATA(PIO_0_BASE, seconds % 10);
+    IOWR_ALTERA_AVALON_PIO_DATA(PIO_1_BASE, seconds / 10);
+
+    // HEX 3, 2: Phút
+    IOWR_ALTERA_AVALON_PIO_DATA(PIO_2_BASE, minutes % 10);
+    IOWR_ALTERA_AVALON_PIO_DATA(PIO_3_BASE, minutes / 10);
+
+    // HEX 5, 4: Giờ
+    IOWR_ALTERA_AVALON_PIO_DATA(PIO_4_BASE, hours % 10);
+    IOWR_ALTERA_AVALON_PIO_DATA(PIO_5_BASE, hours / 10);
+}
+
+int main() {
+    printf("6-Digit Clock System Started...\n");
+
+    // Khởi tạo Timer 1 giây (với clock 50MHz)
+    IOWR_ALTERA_AVALON_TIMER_PERIODL(TIMER_0_BASE, 0x2480);
+    IOWR_ALTERA_AVALON_TIMER_PERIODH(TIMER_0_BASE, 0x02FA);
+    alt_ic_isr_register(0, TIMER_0_IRQ, timer_isr, NULL, NULL);
+    IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_0_BASE, 0x07);
+
+    int last_key_state = 1; // Mặc định nút chưa nhấn (mức 1)
+
+    while (1) {
+        // Đọc trạng thái Switch và Nút nhấn (Dùng PIO_6_BASE cho KEY1)
+        int sw_state = IORD_ALTERA_AVALON_PIO_DATA(SWITCHES_0_BASE);
+        int key_state = IORD_ALTERA_AVALON_PIO_DATA(KEYS_0_BASE);
+
+        // Kiểm tra xem có gạt SW1, SW2, hoặc SW3 lên không
+        // SW1 = 0x02, SW2 = 0x04, SW3 = 0x08
+        if ((sw_state & 0x02) || (sw_state & 0x04) || (sw_state & 0x08)) {
+            is_editing = 1; // Tạm dừng đồng hồ tự chạy
+
+            // Bắt sườn xuống của KEY1 (nhấn từ 1 xuống 0)
+            if (((key_state & 0x01) == 0) && (last_key_state == 1)) {
+
+                // SW1 bật -> Chỉnh giây
+                if (sw_state & 0x02) {
+                    seconds++;
+                    if (seconds >= 60) seconds = 0;
+                }
+                // SW2 bật -> Chỉnh phút
+                if (sw_state & 0x04) {
+                    minutes++;
+                    if (minutes >= 60) minutes = 0;
+                }
+                // SW3 bật -> Chỉnh giờ
+                if (sw_state & 0x08) {
+                    hours++;
+                    if (hours >= 24) hours = 0;
+                }
+            }
+        } else {
+            is_editing = 0; // Gạt hết Switch xuống -> Chạy bình thường
+        }
+
+        // Luôn cập nhật hiển thị lên LED
+        display_time();
+
+        // Lưu trạng thái của KEY1 cho lần lặp tiếp theo
+        last_key_state = (key_state & 0x01);
+
+        // Delay 10ms để chống rung phím (Debounce)
+        usleep(10000);
+    }
+    return 0;
+}
