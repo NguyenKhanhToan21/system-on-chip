@@ -1,0 +1,22 @@
+module Memory #( parameter data_width = 32, parameter address_width = 4)(	
+	input iCLK,  iReset_n, iChipSelect_n, iWrite_n, iRead_n,
+	input [address_width - 1 : 0] iAddress,
+	input [data_width - 1 : 0] iData,
+	output [data_width - 1 : 0] oData
+);
+	reg [data_width - 1 : 0] mem [ (1<<address_width) - 1 : 0];
+	reg [address_width - 1 : 0] address_reg;
+	
+	always @(posedge iCLK or negedge iReset_n) begin 
+		if(!iReset_n) begin 
+			address_reg <= 0;
+		end 
+		else if ( ~iChipSelect_n & ~iWrite_n) begin 
+			mem[iAddress] <= iData;
+			end 
+		else if ( ~iChipSelect_n & ~iRead_n) begin 
+			address_reg <= iAddress;
+			end 
+		end 
+		assign oData = mem[address_reg];
+endmodule

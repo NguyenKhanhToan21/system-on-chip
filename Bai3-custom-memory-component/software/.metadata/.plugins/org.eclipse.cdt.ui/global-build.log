@@ -1,0 +1,262 @@
+
+**** Build of configuration Nios II for project Bai5 ****
+
+make all 
+      1 [main] sh 18500 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 10788 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] echo 2256 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Building ../Bai5_bsp/
+make --no-print-directory -C ../Bai5_bsp/
+      1 [main] pwd 2320 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 17320 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 17296 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+[BSP build complete]
+      1 [main] echo 16600 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+Info: Compiling Bai2.c to obj/default/Bai2.o
+the public mailing list cygwin@cygwin.com
+      1 [main] mkdir 7988 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+nios2-elf-gcc -xc -MP -MMD -c -I../Bai5_bsp//HAL/inc -I../Bai5_bsp/ -I../Bai5_bsp//drivers/inc  -DSYSTEM_BUS_WIDTH=32 -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -O0 -g -Wall   -EL -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o obj/default/Bai2.o Bai2.c
+Bai2.c: In function 'main':
+Bai2.c:23: warning: statement with no effect
+Bai2.c:23: error: expected ';' before 'Ghi'
+Bai2.c:21: warning: unused variable 'data1'
+Bai2.c:21: warning: unused variable 'data0'
+Bai2.c:20: warning: unused variable 'i'
+Bai2.c:18: warning: unused variable 'mem1_ptr'
+Bai2.c:17: warning: unused variable 'mem0_ptr'
+make: *** [obj/default/Bai2.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Nios II for project Bai5 ****
+
+make all 
+      1 [main] sh 2868 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 19240 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] echo 3360 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Building ../Bai5_bsp/
+make --no-print-directory -C ../Bai5_bsp/
+      1 [main] pwd 3056 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 5764 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 6096 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+[BSP build complete]
+      1 [main] echo 3188 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+Info: Compiling Bai2.c to obj/default/Bai2.o
+the public mailing list cygwin@cygwin.com
+      1 [main] mkdir 3152 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+nios2-elf-gcc -xc -MP -MMD -c -I../Bai5_bsp//HAL/inc -I../Bai5_bsp/ -I../Bai5_bsp//drivers/inc  -DSYSTEM_BUS_WIDTH=32 -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -O0 -g -Wall   -EL -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o obj/default/Bai2.o Bai2.c
+Bai2.c: In function 'main':
+Bai2.c:23: warning: statement with no effect
+Bai2.c:23: error: expected ';' before 'Ghi'
+Bai2.c:21: warning: unused variable 'data1'
+Bai2.c:21: warning: unused variable 'data0'
+Bai2.c:20: warning: unused variable 'i'
+Bai2.c:18: warning: unused variable 'mem1_ptr'
+Bai2.c:17: warning: unused variable 'mem0_ptr'
+make: *** [obj/default/Bai2.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Nios II for project Bai5 ****
+
+make all 
+      1 [main] sh 1884 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 4772 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] echo 5924 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Building ../Bai5_bsp/
+make --no-print-directory -C ../Bai5_bsp/
+      1 [main] pwd 17208 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 9784 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 16600 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+[BSP build complete]
+      1 [main] echo 11124 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Compiling Bai2.c to obj/default/Bai2.o
+      1 [main] mkdir 18636 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+nios2-elf-gcc -xc -MP -MMD -c -I../Bai5_bsp//HAL/inc -I../Bai5_bsp/ -I../Bai5_bsp//drivers/inc  -DSYSTEM_BUS_WIDTH=32 -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -O0 -g -Wall   -EL -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o obj/default/Bai2.o Bai2.c
+Bai2.c: In function 'main':
+Bai2.c:23: warning: statement with no effect
+Bai2.c:23: error: expected ';' before 'Ghi'
+Bai2.c:21: warning: unused variable 'data1'
+Bai2.c:21: warning: unused variable 'data0'
+Bai2.c:20: warning: unused variable 'i'
+Bai2.c:18: warning: unused variable 'mem1_ptr'
+Bai2.c:17: warning: unused variable 'mem0_ptr'
+make: *** [obj/default/Bai2.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Nios II for project Bai5 ****
+
+make all 
+      1 [main] sh 6496 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      2 [main] sh 19184 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] echo 18608 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+Info: Building ../Bai5_bsp/
+the public mailing list cygwin@cygwin.com
+make --no-print-directory -C ../Bai5_bsp/
+      1 [main] pwd 6664 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 12000 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 18604 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+[BSP build complete]
+      1 [main] echo 6800 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Compiling Bai2.c to obj/default/Bai2.o
+      1 [main] mkdir 6700 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+nios2-elf-gcc -xc -MP -MMD -c -I../Bai5_bsp//HAL/inc -I../Bai5_bsp/ -I../Bai5_bsp//drivers/inc  -DSYSTEM_BUS_WIDTH=32 -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -O0 -g -Wall   -EL -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o obj/default/Bai2.o Bai2.c
+      1 [main] true 372 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] echo 4240 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+Info: Linking Bai5.elf
+the public mailing list cygwin@cygwin.com
+nios2-elf-g++  -T'../Bai5_bsp//linker.x' -msys-crt0='../Bai5_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../Bai5_bsp/  -msmallc  -Wl,-Map=Bai5.map   -O0 -g -Wall   -EL -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o Bai5.elf obj/default/Bai2.o -lm 
+nios2-elf-insert Bai5.elf --thread_model hal --cpu_name nios2_qsys_0 --qsys true --simulation_enabled false --stderr_dev jtag_uart_0 --stdin_dev jtag_uart_0 --stdout_dev jtag_uart_0 --sopc_system_name system --quartus_project_dir "E:/UIT/SoC/LAB_TH/Bai3" --sopcinfo E:/UIT/SoC/LAB_TH/Bai3/system.sopcinfo
+      1 [main] sh 3064 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] uname 12656 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      2 [main] sh 13892 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: (Bai5.elf) 9380 Bytes program size (code + initialized data).
+Info:            22 KBytes free for stack + heap.
+      1 [main] echo 2908 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+Info: Creating Bai5.objdump
+the public mailing list cygwin@cygwin.com
+nios2-elf-objdump --disassemble --syms --all-header --source Bai5.elf >Bai5.objdump
+      1 [main] sh 7672 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 7388 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+[Bai5 build complete]
+
+**** Build Finished ****
+
+**** Build of configuration Nios II for project Bai5 ****
+
+make all 
+      1 [main] sh 19696 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 19680 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] echo 6836 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Building ../Bai5_bsp/
+make --no-print-directory -C ../Bai5_bsp/
+      1 [main] pwd 14608 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 6300 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 11428 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+[BSP build complete]
+      1 [main] true 9628 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 17300 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+[Bai5 build complete]
+
+**** Build Finished ****
+
+**** Build of configuration Nios II for project Bai5 ****
+
+make all 
+      1 [main] sh 16680 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 16456 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] echo 5440 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Building ../Bai5_bsp/
+make --no-print-directory -C ../Bai5_bsp/
+      1 [main] pwd 20412 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 5048 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 6064 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+[BSP build complete]
+      1 [main] echo 20344 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+Info: Compiling Bai2.c to obj/default/Bai2.o
+the public mailing list cygwin@cygwin.com
+      1 [main] mkdir 19732 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+nios2-elf-gcc -xc -MP -MMD -c -I../Bai5_bsp//HAL/inc -I../Bai5_bsp/ -I../Bai5_bsp//drivers/inc  -DSYSTEM_BUS_WIDTH=32 -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -O0 -g -Wall   -EL -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o obj/default/Bai2.o Bai2.c
+      1 [main] true 2684 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] echo 7212 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+Info: Linking Bai5.elf
+the public mailing list cygwin@cygwin.com
+nios2-elf-g++  -T'../Bai5_bsp//linker.x' -msys-crt0='../Bai5_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../Bai5_bsp/  -msmallc  -Wl,-Map=Bai5.map   -O0 -g -Wall   -EL -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o Bai5.elf obj/default/Bai2.o -lm 
+nios2-elf-insert Bai5.elf --thread_model hal --cpu_name nios2_qsys_0 --qsys true --simulation_enabled false --stderr_dev jtag_uart_0 --stdin_dev jtag_uart_0 --stdout_dev jtag_uart_0 --sopc_system_name system --quartus_project_dir "E:/UIT/SoC/LAB_TH/Bai3" --sopcinfo E:/UIT/SoC/LAB_TH/Bai3/system.sopcinfo
+      1 [main] sh 4472 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] uname 7196 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 6792 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: (Bai5.elf) 9380 Bytes program size (code + initialized data).
+Info:            22 KBytes free for stack + heap.
+      1 [main] echo 10296 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Info: Creating Bai5.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source Bai5.elf >Bai5.objdump
+      1 [main] sh 16656 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 15956 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+[Bai5 build complete]
+
+**** Build Finished ****
+
+**** Build of configuration Nios II for project Bai5 ****
+
+make all 
+      1 [main] sh 10148 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 20344 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] echo 17184 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+Info: Building ../Bai5_bsp/
+the public mailing list cygwin@cygwin.com
+make --no-print-directory -C ../Bai5_bsp/
+      1 [main] pwd 11808 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 14568 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 16352 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+[BSP build complete]
+      1 [main] true 14104 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 4628 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+[Bai5 build complete]
+
+**** Build Finished ****
